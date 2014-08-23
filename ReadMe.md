@@ -65,6 +65,8 @@ We need to do four things to get GitHub user eigen-faces:
 
     `./hog/eigenfaces.py data/avatars/*.png`
 
+    `./hog/visualize_eigenvalues.sh eigenvalues.png data/eigenfaces`
+
 ## Dependencies
 
 - Python 2.7: scipy, sklearn, skimage, PIL, matplotlib, requests

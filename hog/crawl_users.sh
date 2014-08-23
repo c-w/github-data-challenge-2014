@@ -11,17 +11,19 @@
 #   crawl_users.sh         # fetches 1 batch of results starting at page 0
 
 
-################################################################################
-#      Configuration (all paths are relative to the git-repository root)       #
-################################################################################
+###############################################################################
+#      Configuration (all paths are relative to the git-repository root)      #
+###############################################################################
 GITHUB_USER='c-w'         # your GitHub username (used as user-agent)
 GITHUB_API='users'        # the GitHub API to query
 GITHUB_OAUTH='oauth.txt'  # location of your GitHub OAuth token
 DATA_OUT='data/users'     # directory to which to dump the crawled results
 
-################################################################################
-#  Application logic (you shouldn't need to change anything past this point)   #
-################################################################################
+
+###############################################################################
+#  Application logic (you shouldn't need to change anything past this point)  #
+###############################################################################
+
 
 REPO_ROOT="$(readlink -f $(git rev-parse --show-toplevel))"
 DATA_OUT="${REPO_ROOT}/${DATA_OUT}"

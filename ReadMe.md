@@ -17,7 +17,15 @@ Unicorns? Ninjas? This visualization finally brings answers!
 
 We need to do four things to get GitHub user eigen-faces:
 
-1. First, we crawl the /users API and grab some meta-data about people on
+0. First, we need to do some admin work. You'll want to create an [OAuth
+   Token](https://help.github.com/articles/creating-an-access-token-for-command-line-use)
+   and copy it into a file named *oauth.txt* in the top-level directory of this
+   repository. Then, have a peek around the scripts in the *hog/* directory (no,
+   nothing to do with pigs - that's short for "Humans of GitHub", you silly).
+   There are some configuration options at the top of each script that you'll
+   want to review and adapt if you deem it necessary.
+
+1. Now, we crawl the /users API and grab some meta-data about people on
    GitHub. Amongst others, this meta-data contains a link to every user's avatar
    that we'll use to get some image data in a minute. The following snippet
    downloads 5000 batches of JSON user information (starting from the first)

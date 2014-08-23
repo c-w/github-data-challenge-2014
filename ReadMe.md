@@ -10,8 +10,9 @@ to acquire a large collection of user avatars. User avatars! A pointed
 expression of individualism; A mirror into the users' soul. We then use
 dimensionality reduction techniques in order to explore if there are any
 similarities or re-occurring patterns in the user avatars, thus answering the
-eternal question of *Who really uses GitHub?* Cats with eight tentacles?
-Unicorns? Ninjas? This visualization finally brings answers!
+eternal question of *Who really uses GitHub?* Who are the Humans of GitHub? Cats
+with eight tentacles?  Unicorns? Ninjas? This visualization finally brings
+answers!
 
 ## Usage
 

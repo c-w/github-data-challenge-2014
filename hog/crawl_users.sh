@@ -6,9 +6,9 @@
 # set by fiddling with the variables in the configuration section below.
 #
 # Usage:
-#   crawl-users.sh 338 10  # fetches 10 batches of results starting at page 338
-#   crawl-users.sh 338     # fetches 1 batch of results starting at page 338
-#   crawl-users.sh         # fetches 1 batch of results starting at page 0
+#   crawl_users.sh 338 10  # fetches 10 batches of results starting at page 338
+#   crawl_users.sh 338     # fetches 1 batch of results starting at page 338
+#   crawl_users.sh         # fetches 1 batch of results starting at page 0
 
 
 ################################################################################

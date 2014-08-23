@@ -1,4 +1,5 @@
 *.pyc
 /virtualenv/
 /oauth.txt
+/data/
 *.log

@@ -10,3 +10,9 @@ novelty of our approach is that it *puts a face to the name*. Our visualization
 uses the GitHub [Users API](https://developer.github.com/v3/users/) to infer
 Eigenfaces for the "humans of GitHub" and explores whether there are any strong
 patterns in the avatars of GitHub users.
+
+
+## Dependencies
+
+- Python 2.7
+- cURL

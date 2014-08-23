@@ -16,6 +16,11 @@ answers!
 
 ## Usage
 
+[Eigenfaces](http://jeremykun.com/2011/07/27/eigenfaces/) are a straight-forward
+and highly interpretable way to find structure and patterns in large collections
+of images.  So that's the first technique we are going to use to explore the
+"Humans of GitHub".
+
 We need to do four simple things to get GitHub user eigen-faces.
 
 But before we get started, we first need to do some admin work. You'll want to

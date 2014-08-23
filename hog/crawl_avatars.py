@@ -106,7 +106,7 @@ def _main():
 
     """
     import argparse
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description=__doc__.split('Usage:')[0])
     parser.add_argument('files', nargs='+', help='the json.gz files to crawl')
     args = parser.parse_args()
 

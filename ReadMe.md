@@ -17,3 +17,4 @@ avatars of GitHub users.
 
 - Python 2.7
 - cURL
+- ImageMagick

@@ -15,6 +15,6 @@ avatars of GitHub users.
 
 ## Dependencies
 
-- Python 2.7
+- Python 2.7: scipy, sklearn, skimage, PIL, matplotlib, requests
 - cURL
 - ImageMagick

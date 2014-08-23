@@ -1,4 +1,4 @@
-# Human of GitHub (HoG)
+# Humans of GitHub (HoG)
 
 This entry to the [Third Annual GitHub Data
 Challenge](https://github.com/blog/1864-third-annual-github-data-challenge)

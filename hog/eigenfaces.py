@@ -86,7 +86,8 @@ def compute_eigenfaces(image_paths, n_eigenfaces=NUM_EIGENFACES):
     _log('computing %d eigenfaces' % n_eigenfaces)
     pca = RandomizedPCA(n_components=n_eigenfaces).fit(image_matrix)
     eigenfaces = pca.components_.reshape((n_eigenfaces, width, height))
-    return eigenfaces
+    eigenvalues = pca.explained_variance_ratio_
+    return zip(eigenfaces, eigenvalues)
 
 
 def _imsave(path, matrix):
@@ -103,8 +104,8 @@ def plot_eigenfaces(image_paths, data_out=os.path.join(_gitrepo(), DATA_OUT)):
 
     """
     eigenfaces = compute_eigenfaces(image_paths)
-    for i, eigenface in enumerate(eigenfaces, start=1):
-        outpath = os.path.join(data_out, 'eigenface_%d.png' % i)
+    for i, (eigenface, eigenvalue) in enumerate(eigenfaces, start=1):
+        outpath = os.path.join(data_out, 'eigenface#%s#.png' % eigenvalue)
         _log('saving eigenface %d to %s' % (i, outpath))
         _imsave(outpath, eigenface * 255)
 

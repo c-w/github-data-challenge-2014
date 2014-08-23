@@ -62,3 +62,4 @@ We need to do four things to get GitHub user eigen-faces:
 - Python 2.7: scipy, sklearn, skimage, PIL, matplotlib, requests
 - cURL
 - ImageMagick
+- GNUplot

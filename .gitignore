@@ -1,5 +1,8 @@
+# python stuff
 *.pyc
 /virtualenv/
+
+# application-specific stuff
 /oauth.txt
 /data/
 *.log

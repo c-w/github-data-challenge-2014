@@ -86,15 +86,12 @@ def _reshape(image, height, width):
         actual_height, actual_width = image.shape[:2]
         if len(image.shape) == 3:
             image = image[:, :, 0]
-            _log('stripped extra third dimension')
         elif actual_height < height:
             padding = np.zeros((height - actual_height, width))
             image = np.vstack([image, padding])
-            _log('applied height padding')
         elif actual_width < width:
             padding = np.zeros((height, width - actual_width))
             image = np.hstack([image, padding])
-            _log('applied width padding')
         else:
             raise ValueError('unhandled resizing case: ' + str(image.shape))
     return image.reshape(1, height * width)

@@ -69,10 +69,10 @@ as a 10000x1-dimensional vector, bunches them together into a matrix and applies
 PCA. The top-50 principal components are then unrolled into images and output to
 *data/eigenfaces*. The eigenfaces adhere to the following naming convention:
 *eigenface#0.[0-9]+#.png* where the numbers indicate the percentage of variance
-explained by the principal component corresponding to the eigenface. This
-naming convention allows us to analyze the principal components we acquired
-through PCA, for example by graphing how many eigenfaces we need to explain 95%
-of the variance in the data.
+explained by the principal component corresponding to the eigenface. This naming
+convention allows us to analyze the principal components we acquired through
+PCA, for example by graphing how many eigenfaces we need to explain 95% of the
+variance in the data.
 
 `./hog/eigenfaces.py data/avatars/*.png`
 

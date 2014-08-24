@@ -46,7 +46,8 @@ Now we're ready to rock and create some eigen-faces!
 
 2. We then use the previoulsy acquired meta-information to collect a large
    number of avatars of GitHub users. The following snippet retrieves the avatar
-   of ever user we queried from the API and stores it at *data/avatars*.
+   of ever user we queried from the API (we use 20125 avatars in total for our
+   experiments) and stores it at *data/avatars*.
 
     `./hog/crawl_avatars.py data/users/*.json.gz`
 
@@ -56,9 +57,10 @@ Now we're ready to rock and create some eigen-faces!
    just is convenience to not have to deal with multiple image formats later.
    The later two operations make the rest of the eigen-face inference problem
    more tractable by reducing the dimensionality of our data-set. The script
-   also filters out any GitHub auto-generated avatars. Note: the avatars are
-   edited in-place i.e. the original full-size and full-color avatars are
-   removed in favor of their new low-pixel grayscale versions.
+   also filters out any GitHub auto-generated avatars (9953 or 49% of all
+   avatars in our data-set were auto-generated). Note: the avatars are edited
+   in-place i.e. the original full-size and full-color avatars are removed in
+   favor of their new low-pixel grayscale versions.
 
     `./hog/preprocess_avatars.sh data/avatars/*`
 

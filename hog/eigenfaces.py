@@ -11,6 +11,8 @@ Usage:
 ###############################################################################
 DATA_OUT = 'data/eigenfaces'   # directory to which to dump the results
 NUM_EIGENFACES = 50            # number of eigenfaces to output
+IMAGE_HEIGHT = 100             # height of the images/eigenfaces
+IMAGE_WIDTH = 100              # width of the images/eigenfaces
 
 
 ###############################################################################
@@ -73,14 +75,38 @@ def _normalize(matrix):
     return (matrix - matrix.mean()) / matrix.std()
 
 
-def compute_eigenfaces(image_paths, n_eigenfaces=NUM_EIGENFACES):
+def _reshape(image, height, width):
+    """Best effort attempt to resize an image into a 1xwidth*height dimensional
+    vector. If necessary, the image will be padded horizontally or vertically
+    or extra dimensions will be removed.
+
+    """
+    desired_shape = (height, width)
+    if image.shape != desired_shape:
+        actual_height, actual_width = image.shape[:2]
+        if len(image.shape) == 3:
+            image = image[:, :, 0]
+            _log('stripped extra third dimension')
+        elif actual_height < height:
+            padding = np.zeros((height - actual_height, width))
+            image = np.vstack([image, padding])
+            _log('applied height padding')
+        elif actual_width < width:
+            padding = np.zeros((height, width - actual_width))
+            image = np.hstack([image, padding])
+            _log('applied width padding')
+        else:
+            raise ValueError('unhandled resizing case: ' + str(image.shape))
+    return image.reshape(1, height * width)
+
+
+def compute_eigenfaces(image_paths, n_eigenfaces=NUM_EIGENFACES,
+                       width=IMAGE_WIDTH, height=IMAGE_HEIGHT):
     """Finds the eigenfaces of a set of images.
 
     """
-    _log('loading %d images' % len(image_paths))
-    images = np.array([io.imread(path) for path in image_paths])
-    _, width, height = images.shape
-    image_matrix = np.vstack([image.reshape(1, width * height)
+    images = (io.imread(path) for path in image_paths)
+    image_matrix = np.vstack([_reshape(image, height, width)
                               for image in images])
 
     _log('computing %d eigenfaces' % n_eigenfaces)

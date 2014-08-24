@@ -16,7 +16,7 @@ answers!
 
 ## Technical detail
 
-We need to do four simple things to get GitHub user eigen-faces (detailed in the
+We need to do four simple things to get GitHub user eigenfaces (detailed in the
 four sections below).
 
 ### Data acquisition
@@ -30,7 +30,7 @@ nothing to do with pigs - that's short for "Humans of GitHub", you silly).
 There are some configuration options at the top of each script that you'll want
 to review and adapt if you deem it necessary.
 
-Now we're ready to rock and create some eigen-faces!
+Now we're ready to rock and create some eigenfaces!
 
 We crawl the /users API and grab some meta-data about people on GitHub.  Amongst
 others, this meta-data contains a link to every user's avatar that we'll use to
@@ -53,7 +53,7 @@ Next up, we apply some preprocessing to make sure that all avatars are roughly
 comparable. The following snippet converts all avatars to PNG, rescales them to
 100x100 pixels and converts them to gray-scale. The first operation really just
 is convenience to not have to deal with multiple image formats later.  The later
-two operations make the rest of the eigen-face inference problem more tractable
+two operations make the rest of the eigenface inference problem more tractable
 by reducing the dimensionality of our data-set. The script also filters out any
 GitHub auto-generated avatars. Note: the avatars are edited in-place i.e. the
 original full-size and full-color avatars are removed in favor of their new
@@ -63,15 +63,15 @@ low-pixel gray-scale versions.
 
 ### Principal component analysis
 
-Finally, we can use Principal Component Analysis to perform eigen-face
+Finally, we can use Principal Component Analysis to perform eigenface
 decomposition! The following snippet loads every 100x100 image in our data-set
 as a 10000x1-dimensional vector, bunches them together into a matrix and applies
 PCA. The top-50 principal components are then unrolled into images and output to
-*data/eigenfaces*. The eigen-faces adhere to the following naming convention:
+*data/eigenfaces*. The eigenfaces adhere to the following naming convention:
 *eigenface#0.[0-9]+#.png* where the numbers indicate the percentage of variance
-explained by the principal component corresponding to the eigen-face. This
+explained by the principal component corresponding to the eigenface. This
 naming convention allows us to analyze the principal components we acquired
-through PCA, for example by graphing how many eigen-faces we need to explain 95%
+through PCA, for example by graphing how many eigenfaces we need to explain 95%
 of the variance in the data.
 
 `./hog/eigenfaces.py data/avatars/*.png`
@@ -84,7 +84,7 @@ We downloaded 20125 avatars in total for our experiments. 9953 (49%) of these
 avatars were auto-generated and thus filtered out, leaving 10172 avatars left
 over. Due to computing equipment constraints, we unfortunately had to reduce
 this data-set further: we used a random selection of 8000 avatars from our
-data-set to create the final eigen-face decomposition visualization. (Doing
+data-set to create the final eigenface decomposition visualization. (Doing
 data-science on a Samsung Chromebook... It's not fun.)
 
 ## Dependencies

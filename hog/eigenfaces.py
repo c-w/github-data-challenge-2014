@@ -80,8 +80,8 @@ def compute_eigenfaces(image_paths, n_eigenfaces=NUM_EIGENFACES):
     _log('loading %d images' % len(image_paths))
     images = np.array([io.imread(path) for path in image_paths])
     _, width, height = images.shape
-    image_matrix = _normalize(np.vstack([image.reshape(1, width * height)
-                                         for image in images]))
+    image_matrix = np.vstack([image.reshape(1, width * height)
+                              for image in images])
 
     _log('computing %d eigenfaces' % n_eigenfaces)
     pca = RandomizedPCA(n_components=n_eigenfaces).fit(image_matrix)

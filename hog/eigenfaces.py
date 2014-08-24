@@ -85,7 +85,7 @@ def compute_eigenfaces(image_paths, n_eigenfaces=NUM_EIGENFACES):
 
     _log('computing %d eigenfaces' % n_eigenfaces)
     pca = RandomizedPCA(n_components=n_eigenfaces).fit(image_matrix)
-    eigenfaces = pca.components_.reshape((n_eigenfaces, width, height))
+    eigenfaces = pca.components_.reshape((n_eigenfaces, height, width))
     eigenvalues = pca.explained_variance_ratio_
     return zip(eigenfaces, eigenvalues)
 

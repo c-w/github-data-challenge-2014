@@ -78,7 +78,7 @@ Now we're ready to rock and create some eigen-faces!
 
 ## Dependencies
 
-- Python 2.7: scipy, sklearn, skimage, PIL, matplotlib, requests
+- Python 2.7: sklearn, skimage, numpy, requests
 - cURL
 - ImageMagick
 - GNUplot

@@ -80,9 +80,9 @@ Now we're ready to rock and create some eigen-faces!
 We downloaded 20125 avatars in total for our experiments. 9953 (49%) of these
 avatars were auto-generated and thus filtered out, leaving 10172 avatars left
 over. Due to computing equipment constraints, we unfortunately had to reduce
-this data-set futher: we used a random selection of 8000 avatars from our
+this data-set further: we used a random selection of 8000 avatars from our
 data-set to create the final eigen-face decomposition visualization. (Doing
-data-science on a Samsung Chromebook... it's not fun.)
+data-science on a Samsung Chromebook... It's not fun.)
 
 ## Dependencies
 

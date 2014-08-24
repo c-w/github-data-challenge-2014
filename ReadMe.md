@@ -26,7 +26,7 @@ create an [OAuth
 Token](https://help.github.com/articles/creating-an-access-token-for-command-line-use)
 and copy it into a file named *oauth.txt* in the top-level directory of this
 repository. Then, have a peek around the scripts in the *hog/* directory (no,
-nothing to do with pigs - that's short for "Humans of GitHub", you silly).
+nothing to do with pigs - that's short for "Humans of GitHub," you silly).
 There are some configuration options at the top of each script that you'll want
 to review and adapt if you deem it necessary.
 

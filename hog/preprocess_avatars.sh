@@ -12,9 +12,9 @@
 ###############################################################################
 #      Configuration (all paths are relative to the git-repository root)      #
 ###############################################################################
-IMAGE_SIZE='100x100'      # size to which to convert the avatars
-IMAGE_TYPE='png'          # the image type to which to conver the avatars
-IMAGE_COLOR='gray'        # the colorspace to which to transform the avatars
+IMAGE_SIZE='100x100'        # size to which to convert the avatars
+IMAGE_TYPE='png'            # the image type to which to conver the avatars
+IMAGE_COLOR='gray'          # the colorspace to which to transform the avatars
 AUTOGEN_DIR='data/autogen'  # directory to which to move auto-generated avatars
 
 

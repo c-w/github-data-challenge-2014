@@ -55,9 +55,10 @@ Now we're ready to rock and create some eigen-faces!
    to 100x100 pixels and converts them to grayscale. The first operation really
    just is convenience to not have to deal with multiple image formats later.
    The later two operations make the rest of the eigen-face inference problem
-   more tractable by reducing the dimensionality of our data-set. Note: the
-   avatars are edited in-place i.e. the original full-size and full-color
-   avatars are removed in favor of their new low-pixel grayscale versions.
+   more tractable by reducing the dimensionality of our data-set. The script
+   also filters out any GitHub auto-generated avatars. Note: the avatars are
+   edited in-place i.e. the original full-size and full-color avatars are
+   removed in favor of their new low-pixel grayscale versions.
 
     `./hog/preprocess_avatars.sh data/avatars/*`
 

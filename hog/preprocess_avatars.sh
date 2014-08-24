@@ -41,7 +41,7 @@ convert_image() {
         -resize "${IMAGE_SIZE}" \
         -colorspace "${IMAGE_COLOR}" \
         "${image_out}"
-    rm "${image_orig}"
+    [ "${image_out}" != "${image_orig}" ] && rm "${image_orig}"
 
     echo "${image_out}"
 }

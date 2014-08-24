@@ -24,10 +24,15 @@ from skimage import io
 from sklearn.decomposition import RandomizedPCA
 import datetime
 import errno
+import gzip
 import numpy as np
 import os
 import subprocess
 import sys
+try:
+    import cPickle as pickle
+except ImportError:
+    import pickle
 
 
 def _makedirs(dirname):
@@ -106,11 +111,12 @@ def compute_eigenfaces(image_paths, n_eigenfaces=NUM_EIGENFACES,
     image_matrix = np.vstack([_reshape(image, height, width)
                               for image in images])
 
-    _log('computing %d eigenfaces' % n_eigenfaces)
+    _log('computing %d eigenfaces using %d images'
+         % (n_eigenfaces, len(image_matrix)))
     pca = RandomizedPCA(n_components=n_eigenfaces).fit(image_matrix)
     eigenfaces = pca.components_.reshape((n_eigenfaces, height, width))
     eigenvalues = pca.explained_variance_ratio_
-    return zip(eigenfaces, eigenvalues)
+    return zip(eigenfaces, eigenvalues), pca
 
 
 def _imsave(path, matrix):
@@ -122,15 +128,30 @@ def _imsave(path, matrix):
     return io.imsave(path, matrix)
 
 
-def plot_eigenfaces(image_paths, data_out=os.path.join(_gitrepo(), DATA_OUT)):
-    """Visualizes the eigenfaces of a set of images.
+def _serialize(obj, path):
+    """Serializes an object to disk (pickle, compressed). NB: This method
+    ensures that the serialization location is writeable.
 
     """
-    eigenfaces = compute_eigenfaces(image_paths)
+    _makedirs(os.path.dirname(path))
+    with gzip.open(path, 'wb') as gzip_file:
+        pickle.dump(obj, gzip_file)
+
+
+def plot_eigenfaces(image_paths, data_out=os.path.join(_gitrepo(), DATA_OUT)):
+    """Visualizes the eigenfaces of a set of images. Also saves the PCA model
+    that created the eigenfaces for future reference.
+
+    """
+    eigenfaces, pca = compute_eigenfaces(image_paths)
     for i, (eigenface, eigenvalue) in enumerate(eigenfaces, start=1):
         outpath = os.path.join(data_out, 'eigenface#%s#.png' % eigenvalue)
         _log('saving eigenface %d to %s' % (i, outpath))
         _imsave(outpath, eigenface * 255)
+
+    outpath = os.path.join(data_out, 'pca.pickle.gz')
+    _log('saving PCA model to %s' % outpath)
+    _serialize(pca, outpath)
 
 
 def _main():

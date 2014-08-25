@@ -20,7 +20,8 @@ answers!
 and highly interpretable way to find structure and patterns in large collections
 of images.  So that's the technique we are going to use to explore the "Humans
 of GitHub." The following figure shows the results of using Principal Component
-Analysis to find eigenfaces in our data-set of GitHub user-avatars.
+Analysis to find 20 eigenfaces in our data-set of GitHub user-avatars. Every
+eigenface is tagged with the percentage of variance it explains.
 
 ![Eigenfaces of GitHub](visualization/montage.png "Eigenfaces of GitHub")
 

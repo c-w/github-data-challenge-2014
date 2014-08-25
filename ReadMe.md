@@ -51,9 +51,10 @@ We can learn a number of things from this visualization:
 The data-set we used to create this visualization violates a number of key
 assumptions of the usual eigenface inference process: the images in the data-set
 are not controlled for lighting conditions and the images are not centered on a
-common position of mouth and nose. It is interesting how we can nevertheless
-still find somewhat interpretable and most certainly entertaining results. This
-speaks to the robustness of eigenfaces and principal component analysis.
+common position of mouth, eyes and nose. It is interesting how we can
+nevertheless still find somewhat interpretable and most certainly entertaining
+results. This speaks to the robustness of eigenfaces and principal component
+analysis.
 
 You can find full detail on how we went about creating the eigenfaces for our
 visualization in the sections below.

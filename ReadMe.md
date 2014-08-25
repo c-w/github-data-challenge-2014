@@ -25,6 +25,36 @@ eigenface is tagged with the percentage of variance it explains.
 
 ![Eigenfaces of GitHub](visualization/montage.png "Eigenfaces of GitHub")
 
+We can learn a number of things from this visualization:
+
+- **GitHub is used by humans!** The eigenface in the top-left corner of the
+  visualization is the most important eigenface in the plot: it accounts for
+  most of the variance in the data-set. The eigenface has a distinctly humanoid
+  complexion so we can rest assured in the knowledge that GitHub is indeed for
+  humans.
+
+- **GitHub users have funky (facial-)hair!** The second-most important eigenface
+  complements the previously mentioned strongest eigenface nicely. If we
+  interpret the strongest eigenface to capture the variance in human appearance
+  of GitHub users, the second-strongest eigenface captures the variance in
+  things that are around the heads of GitHub users (i.e. their hair) and we can
+  interpret the patterned noise in the second-strongest eigenface as an
+  expression of the variety of GitHub users hair-dos. Similarly, the sixth
+  strongest eigenface can be interpreted as capturing those GitHub users who
+  have a beard.
+
+- **GitHub users like geometry!** The fourth, fifth, ninth and thirteenth most
+  important eigenfaces exhibit very regular patterns that don't look humanoid at
+  all. These eigenfaces can be interpreted as capturing those GitHub users who
+  use a logo or some sort of gemoetric shape for their avatar.
+
+The data-set we used to create this visualization violates a number of key
+assumptions of the usual eigenface inference process: the images in the data-set
+are not controlled for lighting conditions and the images are not centered on a
+common position of mouth and nose. It is interesting how we can nevertheless
+still find somewhat interpretable and most certainly entertaining results. This
+speaks to the robustness of eigenfaces and principal component analysis.
+
 You can find full detail on how we went about creating the eigenfaces for our
 visualization in the sections below.
 

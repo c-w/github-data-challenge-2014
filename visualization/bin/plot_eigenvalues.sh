@@ -7,12 +7,16 @@
 # components (here: eigen-faces) we need to explain most of the variance in the
 # data, the better.
 #
-# The first argument to the script is the location where the visualization will
-# be stored, the second argument is a directory with eigen-face files that
-# follow the naming convention described in the project ReadMe.
-#
 # Usage:
-#   visualize_eigenvalues.sh output eigenface-dir
+#   plot_eigenvalues.sh
+
+
+###############################################################################
+#      Configuration (all paths are relative to the git-repository root)      #
+###############################################################################
+EIGENFACES_DIR='visualization/eigenfaces'
+EIGENFACES_EXT='png'
+PLOT_OUT='visualization/eigenvalues.png'
 
 
 ###############################################################################
@@ -20,12 +24,16 @@
 ###############################################################################
 
 
+REPO_ROOT="$(readlink -f $(git rev-parse --show-toplevel))"
+EIGENFACES_DIR="${REPO_ROOT}/${EIGENFACES_DIR}"
+PLOT_OUT="${REPO_ROOT}/${PLOT_OUT}"
+
 parse_eigenvalues() {
-    local datadir="$1"
     local tmppath="$(mktemp)"
 
-    ls "${datadir}"/*.png \
-    | cut -d'#' -f2 \
+    ls "${EIGENFACES_DIR}"/*.${EIGENFACES_EXT} \
+    | sed "s&.${EIGENFACES_EXT}$&&" \
+    | sed "s@^${EIGENFACES_DIR}/@@" \
     | sort -rn \
     > "${tmppath}"
 
@@ -34,32 +42,29 @@ parse_eigenvalues() {
 
 plot_eigenvalues() {
     local eigenvalues="$1"
-    local outpath="$2"
+    local num_eigenvalues="$(wc -l ${eigenvalues} | cut -f1 -d' ')"
 
     gnuplot -e "
-        set terminal ${outpath##*.};
-        set output '${outpath}';
+        set terminal ${EIGENFACES_EXT};
+        set output '${PLOT_OUT}';
         set xlabel 'number of principal components';
         set ylabel 'percent variance explained';
-        set yrange [0:1];
+        set yrange [0:100];
+        set xrange [1:${num_eigenvalues}];
         unset key;
         plot '${eigenvalues}' smooth cumulative;
     "
 }
 
 main() {
-    # parse arguments
-    local outpath="$1"
-    local datadir="$2"
-
     # enable strict mode
     set -o errexit
     set -o nounset
     set -o pipefail
 
     # plot the eigenvalues
-    eigenvalues="$(parse_eigenvalues ${datadir})"
-    plot_eigenvalues "${eigenvalues}" "${outpath}"
+    eigenvalues="$(parse_eigenvalues)"
+    plot_eigenvalues "${eigenvalues}"
 
     # cleanup
     rm "${eigenvalues}"

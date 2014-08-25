@@ -14,6 +14,19 @@ eternal question of *Who really uses GitHub?* Who are the Humans of GitHub? Cats
 with eight tentacles?  Unicorns? Ninjas? This visualization finally brings
 answers!
 
+## Visualization
+
+[Eigenfaces](http://jeremykun.com/2011/07/27/eigenfaces/) are a straight-forward
+and highly interpretable way to find structure and patterns in large collections
+of images.  So that's the technique we are going to use to explore the "Humans
+of GitHub." The following figure shows the results of using Principal Component
+Analysis to find eigenfaces in our data-set of GitHub user-avatars.
+
+![Eigenfaces of GitHub](visualization/montage.png "Eigenfaces of GitHub")
+
+You can find full detail on how we went about creating the eigenfaces for our
+visualization in the sections below.
+
 ## Technical detail
 
 We need to do four simple things to get GitHub user eigenfaces (detailed in the

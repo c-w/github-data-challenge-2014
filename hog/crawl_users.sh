@@ -74,6 +74,9 @@ main() {
     set -o nounset
     set -o pipefail
 
+    # setup
+    mkdir -p "${DATA_OUT}"
+
     # fetch some data
     for i in $(seq ${num_chunks}); do
         outpath="${DATA_OUT}/${next_chunk}.json.gz"

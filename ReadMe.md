@@ -133,7 +133,7 @@ user-avatars.
 
 ## Dependencies
 
-- Python 2.7: sklearn, skimage, matplotlib, numpy, requests
+- Python 2.7: sklearn, matplotlib, numpy, requests
 - cURL
 - ImageMagick
 - GNUplot

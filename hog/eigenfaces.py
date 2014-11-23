@@ -20,7 +20,6 @@ IMAGE_WIDTH = 100              # width of the images/eigenfaces
 ###############################################################################
 
 
-from skimage import io
 from sklearn.decomposition import RandomizedPCA
 import datetime
 import errno
@@ -69,7 +68,7 @@ def _load_image_as_vector(path):
     vector.
 
     """
-    image = io.imread(path)
+    image = matimage.imread(path)
     width, height = image.shape
     return (width, height), image.reshape(1, (width * height))
 
@@ -108,7 +107,7 @@ def compute_eigenfaces(image_paths, n_eigenfaces=NUM_EIGENFACES,
     """Finds the eigenfaces of a set of images.
 
     """
-    images = (io.imread(path) for path in image_paths)
+    images = (matimage.imread(path) for path in image_paths)
     image_matrix = np.vstack([_reshape(image, height, width)
                               for image in images])
 

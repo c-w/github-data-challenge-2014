@@ -145,7 +145,7 @@ def plot_eigenfaces(image_paths, data_out=os.path.join(_gitrepo(), DATA_OUT)):
     """
     eigenfaces, pca = compute_eigenfaces(image_paths)
     for i, (eigenface, eigenvalue) in enumerate(eigenfaces, start=1):
-        outpath = os.path.join(data_out, 'eigenface#%s#.png' % eigenvalue)
+        outpath = os.path.join(data_out, '%.4f%%.png' % (eigenvalue * 100))
         _log('saving eigenface %d to %s' % (i, outpath))
         _imsave(outpath, eigenface)
 

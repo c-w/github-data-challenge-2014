@@ -91,6 +91,7 @@ def fetch_avatars(path, data_out=os.path.join(_gitrepo(), DATA_OUT)):
 
     """
 
+    _log('processing file %s' % path)
     with gzip.open(path) as gzip_file:
         users = json.load(gzip_file)
 

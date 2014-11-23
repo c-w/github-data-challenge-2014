@@ -111,11 +111,15 @@ def compute_eigenfaces(image_paths, n_eigenfaces=NUM_EIGENFACES,
     image_matrix = np.vstack([_reshape(image, height, width)
                               for image in images])
 
-    _log('computing %d eigenfaces using %d images'
+    _log('computing %d principal components using %d images'
          % (n_eigenfaces, len(image_matrix)))
     pca = RandomizedPCA(n_components=n_eigenfaces).fit(image_matrix)
-    eigenfaces = pca.components_.reshape((n_eigenfaces, height, width))
+    eigenvectors = pca.components_.reshape((n_eigenfaces, height, width))
     eigenvalues = pca.explained_variance_ratio_
+
+    _log('computing eigenfaces')
+    mean_face = np.mean(image_matrix, axis=0).reshape((height, width))
+    eigenfaces = (eigenvector - mean_face for eigenvector in eigenvectors)
     return zip(eigenfaces, eigenvalues), pca
 
 

@@ -22,6 +22,7 @@ DATA_OUT = 'data/avatars'   # directory to which to dump the crawled results
 
 import datetime
 import errno
+import glob
 import gzip
 import json
 import os
@@ -41,6 +42,10 @@ def _urlretrieve(url, filename, adapt_filename=True):
             HTTP header
 
     """
+    matches = glob.glob(filename + '*')
+    if matches:
+        return matches[0]
+
     response = requests.get(url, stream=True)
     response.raise_for_status()
 

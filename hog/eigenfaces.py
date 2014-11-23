@@ -25,6 +25,7 @@ from sklearn.decomposition import RandomizedPCA
 import datetime
 import errno
 import gzip
+import matplotlib.image as matimage
 import numpy as np
 import os
 import subprocess
@@ -120,12 +121,12 @@ def compute_eigenfaces(image_paths, n_eigenfaces=NUM_EIGENFACES,
 
 
 def _imsave(path, matrix):
-    """Wrapper around skimage.io.imsave that makes sure that the image location
-    is writeable.
+    """Wrapper around matplotlib.image.imsave that makes sure that the image
+    location is writeable.
 
     """
     _makedirs(os.path.dirname(path))
-    return io.imsave(path, matrix)
+    return matimage.imsave(path, matrix, cmap='gray')
 
 
 def _serialize(obj, path):
@@ -147,7 +148,7 @@ def plot_eigenfaces(image_paths, data_out=os.path.join(_gitrepo(), DATA_OUT)):
     for i, (eigenface, eigenvalue) in enumerate(eigenfaces, start=1):
         outpath = os.path.join(data_out, 'eigenface#%s#.png' % eigenvalue)
         _log('saving eigenface %d to %s' % (i, outpath))
-        _imsave(outpath, eigenface * 255)
+        _imsave(outpath, eigenface)
 
     outpath = os.path.join(data_out, 'pca.pickle.gz')
     _log('saving PCA model to %s' % outpath)

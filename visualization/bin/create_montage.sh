@@ -13,7 +13,7 @@ EIGENFACES_EXT='png'
 MONTAGE_LAYOUT='5x4'
 MONTAGE_PADDING='+4+4'
 MONTAGE_TITLE='Eigenfaces of GitHub'
-MONTAGE_LABELS='%t%%'
+MONTAGE_LABELS='%t'
 MONTAGE_OUT='visualization/montage.png'
 
 

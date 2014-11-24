@@ -27,6 +27,7 @@ import gzip
 import matplotlib.image as matimage
 import numpy as np
 import os
+import shutil
 import subprocess
 import sys
 try:
@@ -147,6 +148,8 @@ def plot_eigenfaces(image_paths, data_out=os.path.join(_gitrepo(), DATA_OUT)):
     the PCA model that created the eigenfaces for future reference.
 
     """
+    shutil.rmtree(data_out, ignore_errors=True)
+
     mean_face, eigenfaces, pca = compute_eigenfaces(image_paths)
 
     outpath = os.path.join(data_out, 'mean-face.png')

@@ -120,8 +120,8 @@ explained by the principal component corresponding to the eigenface.
 
 ## A note on "big data"
 
-We downloaded 20125 avatars in total for our experiments. 9953 (49%) of these
-avatars were auto-generated and thus filtered out, leaving 10172 avatars left
+We downloaded 54936 avatars in total for our experiments. 28255 (51%) of these
+avatars were auto-generated and thus filtered out, leaving 26681 avatars left
 over. Due to computing equipment constraints, we unfortunately had to reduce
 this data-set further: we used a random selection of 8000 avatars from our
 data-set to create the final eigenface decomposition visualization. (Doing

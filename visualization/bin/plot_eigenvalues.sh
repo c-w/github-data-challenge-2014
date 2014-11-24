@@ -31,8 +31,8 @@ PLOT_OUT="${REPO_ROOT}/${PLOT_OUT}"
 parse_eigenvalues() {
     local tmppath="$(mktemp)"
 
-    ls "${EIGENFACES_DIR}"/*.${EIGENFACES_EXT} \
-    | sed "s&.${EIGENFACES_EXT}$&&" \
+    ls "${EIGENFACES_DIR}"/*%.${EIGENFACES_EXT} \
+    | sed "s&%.${EIGENFACES_EXT}$&&" \
     | sed "s@^${EIGENFACES_DIR}/@@" \
     | sort -rn \
     > "${tmppath}"

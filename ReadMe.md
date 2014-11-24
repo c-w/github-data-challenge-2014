@@ -124,14 +124,7 @@ explained by the principal component corresponding to the eigenface.
 
 We downloaded 54936 avatars in total for our experiments. 28255 (51%) of these
 avatars were auto-generated and thus filtered out, leaving 26681 avatars left
-over. Due to computing equipment constraints, we unfortunately had to reduce
-this data-set further: we used a random selection of 8000 avatars from our
-data-set to create the final eigenface decomposition visualization. (Doing
-data-science on a Samsung Chromebook... It's not fun.) However, the eigenfaces
-our approach managed to infer looked fairly stable past a data-set size of about
-1000 avatars, so we are confident that the results we present in the
-visualization above are representative of the entire population of GitHub
-user-avatars.
+over.
 
 ## Dependencies
 

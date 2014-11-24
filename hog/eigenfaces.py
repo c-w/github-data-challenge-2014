@@ -120,7 +120,7 @@ def compute_eigenfaces(image_paths, n_eigenfaces=NUM_EIGENFACES,
     _log('computing eigenfaces')
     mean_face = np.mean(image_matrix, axis=0).reshape((height, width))
     eigenfaces = (eigenvector - mean_face for eigenvector in eigenvectors)
-    return zip(eigenfaces, eigenvalues), pca
+    return mean_face, zip(eigenfaces, eigenvalues), pca
 
 
 def _imsave(path, matrix):
@@ -143,11 +143,16 @@ def _serialize(obj, path):
 
 
 def plot_eigenfaces(image_paths, data_out=os.path.join(_gitrepo(), DATA_OUT)):
-    """Visualizes the eigenfaces of a set of images. Also saves the PCA model
-    that created the eigenfaces for future reference.
+    """Visualizes the mean-face and eigenfaces of a set of images. Also saves
+    the PCA model that created the eigenfaces for future reference.
 
     """
-    eigenfaces, pca = compute_eigenfaces(image_paths)
+    mean_face, eigenfaces, pca = compute_eigenfaces(image_paths)
+
+    outpath = os.path.join(data_out, 'mean-face.png')
+    _log('saving mean face to %s' % outpath)
+    _imsave(outpath, mean_face)
+
     for i, (eigenface, eigenvalue) in enumerate(eigenfaces, start=1):
         outpath = os.path.join(data_out, '%.4f%%.png' % (eigenvalue * 100))
         _log('saving eigenface %d to %s' % (i, outpath))

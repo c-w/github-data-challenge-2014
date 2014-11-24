@@ -105,11 +105,9 @@ def compute_eigenfaces(image_paths, n_eigenfaces=NUM_EIGENFACES,
     pca = RandomizedPCA(n_components=n_eigenfaces).fit(image_matrix)
     eigenvectors = pca.components_.reshape((n_eigenfaces, height, width))
     eigenvalues = pca.explained_variance_ratio_
+    data_mean = pca.mean_.reshape((height, width))
 
-    _log('computing eigenfaces')
-    mean_face = np.mean(image_matrix, axis=0).reshape((height, width))
-    eigenfaces = (eigenvector - mean_face for eigenvector in eigenvectors)
-    return mean_face, zip(eigenfaces, eigenvalues), pca
+    return data_mean, zip(eigenvectors, eigenvalues), pca
 
 
 def _imread(paths):

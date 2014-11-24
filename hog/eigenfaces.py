@@ -97,9 +97,8 @@ def compute_eigenfaces(image_paths, n_eigenfaces=NUM_EIGENFACES,
     """Finds the eigenfaces of a set of images.
 
     """
-    images = (matimage.imread(path) for path in image_paths)
     image_matrix = np.vstack([_reshape(image, height, width)
-                              for image in images])
+                              for image in _imread(image_paths)])
 
     _log('computing %d principal components using %d images'
          % (n_eigenfaces, len(image_matrix)))
@@ -111,6 +110,17 @@ def compute_eigenfaces(image_paths, n_eigenfaces=NUM_EIGENFACES,
     mean_face = np.mean(image_matrix, axis=0).reshape((height, width))
     eigenfaces = (eigenvector - mean_face for eigenvector in eigenvectors)
     return mean_face, zip(eigenfaces, eigenvalues), pca
+
+
+def _imread(paths):
+    """Wrapper around matplotlib.image.imread that ignores unreadable images.
+
+    """
+    for path in paths:
+        try:
+            yield matimage.imread(path)
+        except RuntimeError:
+            _log('could not read image %s' % path)
 
 
 def _imsave(path, matrix):

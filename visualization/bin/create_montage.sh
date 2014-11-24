@@ -27,14 +27,16 @@ EIGENFACES_DIR="${REPO_ROOT}/${EIGENFACES_DIR}"
 MONTAGE_OUT="${REPO_ROOT}/${MONTAGE_OUT}"
 
 create_montage() {
+    cd "${EIGENFACES_DIR}"
     montage \
         -polaroid 0 \
         -geometry "${MONTAGE_PADDING}" \
         -tile "${MONTAGE_LAYOUT}" \
         -title "${MONTAGE_TITLE}" \
         -label "${MONTAGE_LABELS}" \
-        $(ls "${EIGENFACES_DIR}"/*.${EIGENFACES_EXT} | sort -rn) \
+        $(ls *.${EIGENFACES_EXT} | sort -rn) \
         "${MONTAGE_OUT}"
+    cd -
 }
 
 main() {

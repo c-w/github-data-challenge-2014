@@ -63,17 +63,6 @@ def _log(message, channel=sys.stderr):
     channel.write('[%s] %s\n' % (now, message.rstrip('\n')))
 
 
-def _load_image_as_vector(path):
-    """Loads an image from a path as a vector of pixels. This means that an
-    image that is w pixels wide and h pixels heigh will be loaded as a 1x(w*h)
-    vector.
-
-    """
-    image = matimage.imread(path)
-    width, height = image.shape
-    return (width, height), image.reshape(1, (width * height))
-
-
 def _normalize(matrix):
     """Normalizes a matrix to have zero mean and unit standard deviation.
 

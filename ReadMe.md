@@ -25,6 +25,8 @@ eigenface is tagged with the percentage of variance it explains.
 
 ![Eigenfaces of GitHub](visualization/montage.png "Eigenfaces of GitHub")
 
+**WARNING: the following section contains an out-dated interpretation**
+
 We can learn a number of things from this visualization:
 
 - **GitHub is used by humans!** The eigenface in the top-left corner of the

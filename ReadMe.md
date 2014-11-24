@@ -25,30 +25,32 @@ eigenface is tagged with the percentage of variance it explains.
 
 ![Eigenfaces of GitHub](visualization/montage.png "Eigenfaces of GitHub")
 
-**WARNING: the following section contains an out-dated interpretation**
-
 We can learn a number of things from this visualization:
 
-- **GitHub is used by humans!** The eigenface in the top-left corner of the
-  visualization is the most important eigenface in the plot: it accounts for
-  most of the variance in the data-set. The eigenface has a distinctly humanoid
-  complexion so we can rest assured in the knowledge that GitHub is indeed for
-  humans.
+- **GitHub is used by humans!** The mean-face and the eigenfaces that account
+  for the largest amounts of variance in the data-set all have a distinctly
+  humanoid complexion so we can rest assured in the knowledge that GitHub is
+  indeed for humans.
 
-- **GitHub users have funky (facial-)hair!** The second-most important eigenface
-  complements the previously mentioned strongest eigenface nicely. If we
-  interpret the strongest eigenface to capture the variance in human appearance
-  of GitHub users, the second-strongest eigenface captures the variance in
-  things that are around the heads of GitHub users (i.e. their hair) and we can
-  interpret the patterned noise in the second-strongest eigenface as an
-  expression of the variety of GitHub users hair-dos. Similarly, the sixth
-  strongest eigenface can be interpreted as capturing those GitHub users who
-  have a beard.
+- **GitHub users have funky hair!** The sixth-strongest eigenface captures the
+  variance in things that are around the heads of GitHub users (i.e. their hair)
+  and we can interpret the patterned noise in the eighteenth-strongest eigenface
+  as an expression of the variety of GitHub users hair-dos. Similarly, the
+  fifteenth strongest eigenface can be interpreted as capturing those GitHub
+  users who have a beard.
 
-- **GitHub users like geometry!** The fourth, fifth, ninth and thirteenth most
+- **GitHub users like geometry!** The fourth, eigth and fourteenth most
   important eigenfaces exhibit very regular patterns that don't look humanoid at
   all. These eigenfaces can be interpreted as capturing those GitHub users who
-  use a logo or some sort of gemoetric shape for their avatar.
+  use a logo or some sort of gemoetric shape for their avatar. Examples:
+  [1](https://avatars.githubusercontent.com/u/10038),
+  [2](https://avatars.githubusercontent.com/u/772305).
+
+- **GitHub users like cartoons!** The seventh, twelfth and thirteenth eigenfaces
+  show clearly defined stylized ear-, eye- and nose-regions. This points towards
+  a population of cartoon avatars in the GitHub user-base. Examples:
+  [1](https://avatars.githubusercontent.com/u/10059),
+  [2](https://avatars.githubusercontent.com/u/120810).
 
 The data-set we used to create this visualization violates a number of key
 assumptions of the usual eigenface inference process: the images in the data-set

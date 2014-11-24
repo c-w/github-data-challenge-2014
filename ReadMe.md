@@ -102,9 +102,10 @@ comparable. The following snippet converts all avatars to PNG, rescales them to
 is convenience to not have to deal with multiple image formats later.  The later
 two operations make the rest of the eigenface inference problem more tractable
 by reducing the dimensionality of our data-set. The script also filters out any
-GitHub auto-generated avatars. Note: the avatars are edited in-place i.e. the
-original full-size and full-color avatars are removed in favor of their new
-low-pixel gray-scale versions.
+GitHub auto-generated avatars (like [this
+one](https://avatars.githubusercontent.com/u/520098)). Note: the avatars are
+edited in-place i.e. the original full-size and full-color avatars are removed
+in favor of their new low-pixel gray-scale versions.
 
 `./hog/preprocess_avatars.sh data/avatars/*`
 
